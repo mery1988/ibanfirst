@@ -1,0 +1,90 @@
+{% extends "./base.html.twig" %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 col-lg-12 mx-auto">
+            {% if detailWallet is not null %}
+            <h3 class="mb-4">Détails du portefeuille : {{ detailWallet.id }} </h3>
+            <div class="table-responsive">
+                <table class="table borderless ">
+                    <tbody>
+                    <tr>
+                        <td scope="row">Devise</td>
+                        <td>{{ detailWallet.currency }}</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Tag</td>
+                        <td>{{ detailWallet.tag }}</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Statut</td>
+                        <td>{{ detailWallet.status }}</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Numero de compte</td>
+                        <td>{{ detailWallet.accountNumber }}</td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Correspondent bank</td>
+                        <td>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td scope="row">Bic :</td>
+                                        <td>{{ detailWallet.correspondentBank.bic }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">Nom :</td>
+                                        <td>{{ detailWallet.correspondentBank.name }}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td scope="row">HolderBank</td>
+                        <td>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td scope="row">Bic :</td>
+                                        <td>{{ detailWallet.holderBank.bic }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">Nom :</td>
+                                        <td>{{ detailWallet.holderBank.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">ClearingCode :</td>
+                                        <td>{{ detailWallet.holderBank.clearingCode }}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 offset-md-6 col-lg-3 offset-lg-6">
+            <a class="btn btn-outline-dark" href="{{ path('list_wallets') }}" role="button">
+                <i class="fa fa-chevron-left"></i> Liste des portefeuilles </a>
+        </div>
+        <div class=" col-lg-3 col-md-3">
+            {% if detailWallet is not null %}
+            <a class="btn btn-outline-primary"
+               href="{{ path('list_financial_movements', { 'walletId': detailWallet.id }) }}" role="button">Liste Mvts
+                financiers <i class="fa fa-chevron-right"></i></a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

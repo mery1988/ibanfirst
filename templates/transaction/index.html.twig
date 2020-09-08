@@ -1,0 +1,25 @@
+{% extends "./base.html.twig" %}
+
+
+  {% block body %}
+      <div class="row probootstrap-vh-100 align-items-center text-center">
+          <div class="col-sm">
+              <div class="probootstrap-text">
+                  <h1>
+                      i<u>B</u>an<u>F</u>irst</h1>
+                  <div class="probootstrap-subheading mb-5">
+                      <p class="h4 font-weight-normal">Bienvenue sur notre plateforme</p>
+                  </div>
+                  <p>
+
+                      <a class="btn btn-outline-dark" href="{{ path('list_wallets') }}" role="button">
+                          <i class="fa fa-chevron-left"></i> Liste des portefeuilles </a>
+                      <a class="btn btn-outline-primary"
+                         href="{{ path('list_all_financial_movements') }}" role="button">Liste Mvts
+                          financiers <i class="fa fa-chevron-right"></i></a>
+                  </p>
+              </div>
+          </div>
+      </div>
+{% endblock %}
+

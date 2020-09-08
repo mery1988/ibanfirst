@@ -1,0 +1,21 @@
+{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors~app.js": "/build/vendors~app.js",
+  "build/fonts/fa-brands-400.ttf": "/build/fonts/fa-brands-400.1776173e.ttf",
+  "build/fonts/fa-brands-400.woff": "/build/fonts/fa-brands-400.28d8b8fc.woff",
+  "build/fonts/fa-brands-400.woff2": "/build/fonts/fa-brands-400.37913cdf.woff2",
+  "build/fonts/fa-brands-400.eot": "/build/fonts/fa-brands-400.bfcc3384.eot",
+  "build/fonts/fa-regular-400.eot": "/build/fonts/fa-regular-400.0c6f12b9.eot",
+  "build/fonts/fa-regular-400.woff2": "/build/fonts/fa-regular-400.c3c2ab4f.woff2",
+  "build/fonts/fa-regular-400.ttf": "/build/fonts/fa-regular-400.c9c57c0f.ttf",
+  "build/fonts/fa-regular-400.woff": "/build/fonts/fa-regular-400.fcaa6c13.woff",
+  "build/fonts/fa-solid-900.woff": "/build/fonts/fa-solid-900.22aa6d43.woff",
+  "build/fonts/fa-solid-900.woff2": "/build/fonts/fa-solid-900.4055b057.woff2",
+  "build/fonts/fa-solid-900.ttf": "/build/fonts/fa-solid-900.a480ec97.ttf",
+  "build/fonts/fa-solid-900.eot": "/build/fonts/fa-solid-900.dfaa060a.eot",
+  "build/images/fa-brands-400.svg": "/build/images/fa-brands-400.63b56623.svg",
+  "build/images/fa-regular-400.svg": "/build/images/fa-regular-400.1b536b78.svg",
+  "build/images/fa-solid-900.svg": "/build/images/fa-solid-900.3e2bc2ff.svg"
+}

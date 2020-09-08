@@ -1,0 +1,97 @@
+{% extends "./base.html.twig" %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 col-lg-12 mx-auto">
+            {% if financialMovement is not null %}
+                <h3 class="mb-4">Détails du Mouvement financier : {{ financialMovement.id }} </h3>
+                <div class="table-responsive">
+                    <table class="table borderless ">
+                        <tbody>
+                        <tr>
+                            <td scope="row">Portefeuille</td>
+                            <td>{{ financialMovement.walletId }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">BookingDate</td>
+                            <td>{{ financialMovement.bookingDate|date("m/d/Y") }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">ValueDate</td>
+                            <td>{{ financialMovement.valueDate|date("m/d/Y") }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">N° du compte des règlements</td>
+                            <td>{{ financialMovement.orderingAccountNumber }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">N° du compte des bénéfices</td>
+                            <td>{{ financialMovement.beneficiaryAccountNumber }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Utilisateur déficitaire</td>
+                            <td>{{ financialMovement.orderingAccountNumber }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">OrderingInstitution</td>
+                            <td>{{ financialMovement.orderingInstitution }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Utilisateur bénéficiaire</td>
+                            <td>{{ financialMovement.beneficiaryCustomer }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">BeneficiaryInstitution</td>
+                            <td>{{ financialMovement.beneficiaryInstitution }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Règlement</td>
+                            <td>{{ financialMovement.orderingAmount.value }} {{ financialMovement.orderingAmount.currency }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Bénéfice</td>
+                            <td>{{ financialMovement.beneficiaryAmount.value }} {{ financialMovement.beneficiaryAmount.currency }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">remittanceInformation</td>
+                            <td>{{ financialMovement.remittanceInformation }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Taux de change</td>
+                            <td>{{ financialMovement.exchangeRate|number_format(2, '.', ',') }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Type</td>
+                            <td>{{ financialMovement.typeLabel }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Référence interne</td>
+                            <td>{{ financialMovement.internalReference }}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">Description</td>
+                            <td>{{ financialMovement.description }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 offset-md-6 col-lg-3 offset-lg-6">
+            <a class="btn btn-outline-dark" href="{{ path('list_wallets') }}"
+               role="button">
+                <i class="fa fa-chevron-left"></i> Liste des portefeuilles </a>
+        </div>
+
+        <div class=" col-lg-3 col-md-3">
+            {% if financialMovement is not null %}
+                <a class="btn btn-outline-primary"
+                   href="{{ path('list_financial_movements', { 'walletId': financialMovement.walletId }) }}"
+                   role="button">Liste Mvts
+                    financiers <i class="fa fa-chevron-right"></i></a>
+            {% endif %}
+        </div>
+
+    </div>
+{% endblock %}

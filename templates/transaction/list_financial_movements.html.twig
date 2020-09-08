@@ -1,0 +1,63 @@
+{% extends "./base.html.twig" %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 col-lg-12 mx-auto">
+            {% if walletId is defined %}
+                <h3 class="login-heading mb-4">Liste des mouvements financiers du portefeuille : {{ walletId }}</h3>
+            {% else %}
+                <h3 class="login-heading mb-4">Liste de tous les mouvements financiers </h3>
+            {% endif %}
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">bookingDate</th>
+                    <th scope="col">valueDate</th>
+                    <th scope="col">Montant</th>
+                    <th scope="col">Description</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if financialMovements is defined %}
+                    {% for  financialMovement in financialMovements %}
+                        <tr>
+                            <td scope="row">{{ financialMovement.id }}</td>
+                            <td>{{ financialMovement.bookingDate|date("m/d/Y") }}</td>
+                            <td>{{ financialMovement.valueDate|date("m/d/Y") }}</td>
+                            <td>{{ financialMovement.amount.value }} {{ financialMovement.amount.currency }}</td>
+                            <td>{{ financialMovement.description }}</td>
+                            <td>
+                                <a class="btn btn-outline-info"
+                                   href="{{ path('detail_financial_movement', { 'id': financialMovement.id }) }}"
+                                   role="button">Détail Mvt financier</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% if walletId is defined %}
+        <div class="row">
+            <div class="col-md-3 offset-md-9 col-lg-3 offset-lg-9">
+                <a class="btn btn-outline-dark" href="{{ path('detail_wallet', { 'id': walletId }) }}" role="button">
+                    <i class="fa fa-chevron-left"></i> Détail Portefeuille </a>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-md-3 offset-md-6 col-lg-3 offset-lg-6">
+                    <a class="btn btn-outline-primary"
+                       href="{{ path('home_page') }}"
+                       role="button"> <i class="fa fa-chevron-left"></i> Page d'accueil </a>
+            </div>
+            <div class=" col-lg-3 col-md-3 ">
+                <a class="btn btn-outline-dark" href="{{ path('list_wallets') }}"
+                   role="button">
+                    Liste des portefeuilles <i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
