@@ -39,8 +39,8 @@ class TransactionController extends AbstractController
     public function getListWallets()
     {
         $wallets = $this->transactionHelper->fetchWallets();
-        if($wallets['code'] === self::ERROR_CODE && $wallets['data'] === null) $this->addFlash("warning", "Liste de portefeuilles vide");
-        return $this->render('transaction/list_wallets.html.twig', ['wallets' => $wallets['data']['wallets']]);
+        if ($wallets['code'] === self::ERROR_CODE && $wallets['data'] === null) $this->addFlash("warning", "Liste de portefeuilles vide");
+        return $this->render('transaction/list_wallets.html.twig', ['wallets' => $wallets['data'] !== null ? $wallets['data']['wallets'] : null]);
     }
 
     /**
@@ -51,8 +51,8 @@ class TransactionController extends AbstractController
     public function getDetailWallet(string $id)
     {
         $wallet = $this->transactionHelper->findWalletById($id);
-        if($wallet['code'] === self::ERROR_CODE && $wallet['data'] === null) $this->addFlash("warning", "Portefeuille innexistant");
-        return $this->render('transaction/detail_wallet.html.twig', ['detailWallet' => $wallet['data']['wallet']]);
+        if ($wallet['code'] === self::ERROR_CODE && $wallet['data'] === null) $this->addFlash("warning", "Portefeuille innexistant");
+        return $this->render('transaction/detail_wallet.html.twig', ['detailWallet' => $wallet['data'] !== null ? $wallet['data']['wallet'] : null]);
     }
 
     /**
@@ -63,7 +63,7 @@ class TransactionController extends AbstractController
     public function getListfinancialMovements(string $walletId)
     {
         $financialMovements = $this->transactionHelper->getfinancialMovementsByWalletId($walletId);
-        if($financialMovements['code'] === self::ERROR_CODE && $financialMovements['data'] === null) $this->addFlash("warning", "Pas de mouvements financiers pour ce portefeuille");
+        if ($financialMovements['code'] === self::ERROR_CODE && $financialMovements['data'] === null) $this->addFlash("warning", "Pas de mouvements financiers pour ce portefeuille");
         return $this->render('transaction/list_financial_movements.html.twig', ['financialMovements' => $financialMovements['data'] ? $financialMovements['data']['financialMovements'] : null, 'walletId' => $walletId]);
 
     }
@@ -76,8 +76,8 @@ class TransactionController extends AbstractController
     public function getDetailfinancialMovement(string $id)
     {
         $financialMovement = $this->transactionHelper->findfinancialMovementsById($id);
-        if($financialMovement['code'] === self::ERROR_CODE && $financialMovement['data'] === null) $this->addFlash("warning", "Mouvement financier innexistant");
-        return $this->render('transaction/detail_financial_mouvement.html.twig', ['financialMovement' => $financialMovement['data']['financialMovement']]);
+        if ($financialMovement['code'] === self::ERROR_CODE && $financialMovement['data'] === null) $this->addFlash("warning", "Mouvement financier innexistant");
+        return $this->render('transaction/detail_financial_mouvement.html.twig', ['financialMovement' => $financialMovement['data'] !== null ? $financialMovement['data']['financialMovement'] : null]);
 
     }
 
@@ -89,8 +89,8 @@ class TransactionController extends AbstractController
     public function fetchAllfinancialMovements()
     {
         $financialMovements = $this->transactionHelper->findfinancialMovements();
-        if($financialMovements['code'] === self::ERROR_CODE && $financialMovements['data'] === null) $this->addFlash("warning", "Mouvement financier innexistant");
-        return $this->render('transaction/list_financial_movements.html.twig', ['financialMovements' => $financialMovements['data']['financialMovements']]);
+        if ($financialMovements['code'] === self::ERROR_CODE && $financialMovements['data'] === null) $this->addFlash("warning", "Mouvement financier innexistant");
+        return $this->render('transaction/list_financial_movements.html.twig', ['financialMovements' => $financialMovements['data'] !== null ? $financialMovements['data']['financialMovements'] : null]);
 
     }
 
