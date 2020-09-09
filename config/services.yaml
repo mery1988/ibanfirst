@@ -12,8 +12,8 @@ parameters:
     api.param : "-"
 
     # access endPoint
-    api.login : "a00720d"
-    api.password : "6KPPczga4H6pR+ZeMj+iQ5UpB0foUoO3hQWOjUiYkESU3HGLfXwce8He7TfwY/k4c3hAcFViIFfKUC+GwcbYsQ=="
+    api.login :
+    api.password :
 services:
     # default configuration for services in *this* file
     _defaults:
